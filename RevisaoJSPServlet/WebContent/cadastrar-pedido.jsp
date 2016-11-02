@@ -14,6 +14,17 @@
 
 	<div class="container">
 
+
+		<div class="row">
+			<div class="col-md-3">
+				<c:if test="${not empty tipoMensagem }">
+					<div class="${tipoMensagem }">
+						<p>${mensagem }</p>
+					</div>
+				</c:if>
+			</div>
+		</div>
+
 		<div class="row">
 			<div class="col-md-12">
 				<div class="page-header">
@@ -25,15 +36,15 @@
 		<div class="row">
 			<div class="col-md-12">
 				<form action="pedido" method="post">
-				<input type="hidden" name="acao" value="cadastrar">
+					<input type="hidden" name="acao" value="cadastrar">
 					<div class="row">
 						<div class="col-md-3">
 							<div class="form-group">
-								<label for="idData">Data do Pedido</label>
-								<input type="date" name="data" id="idData" class="form-control" required>
+								<label for="idData">Data do Pedido</label> <input type="date"
+									name="data" id="idData" class="form-control" required>
 							</div>
 						</div>
-					
+
 						<div class="col-md-3">
 							<div class="form-group">
 								<label for="idQuarto">Quarto</label> <input type="text"
@@ -46,14 +57,17 @@
 					<div class="row">
 						<div class="col-md-3">
 							<div class="form-group">
-								<label for="idDescricao">Descrição</label>
-								<input type="text" name="descricao" id="idDescricao" placeholder="Descrição do pedido" class="form-control" required>
+								<label for="idDescricao">Descrição</label> <input type="text"
+									name="descricao" id="idDescricao"
+									placeholder="Descrição do pedido" class="form-control" required>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
-								<label for="idValor">Valor</label>
-								<input type="number" step="0.10" name="valor" id="idValor" placeholder="Informe o Valor do Pedido" class="form-control" required>
+								<label for="idValor">Valor</label> <input type="number"
+									step="0.10" name="valor" id="idValor"
+									placeholder="Informe o Valor do Pedido" class="form-control"
+									required>
 							</div>
 						</div>
 					</div>

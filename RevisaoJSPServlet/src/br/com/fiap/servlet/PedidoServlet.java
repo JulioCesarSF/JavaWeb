@@ -33,8 +33,22 @@ public class PedidoServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doGet(req, resp);
+		String acao = req.getParameter("acao");
+		
+		switch (acao) {
+		case "listar":			
+			listarPedidos(req, resp);			
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	private void listarPedidos(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		bo = new PedidoBO();			
+		req.setAttribute("lista", bo.buscaTodos());
+		req.getRequestDispatcher("listar-pedido.jsp").forward(req, resp);
 	}
 
 	private void cadastrarPedido(HttpServletRequest req, HttpServletResponse resp)

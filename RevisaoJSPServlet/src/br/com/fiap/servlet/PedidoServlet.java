@@ -1,6 +1,9 @@
 package br.com.fiap.servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -75,9 +78,19 @@ public class PedidoServlet extends HttpServlet {
 		String valor = req.getParameter("valor");
 		String status = req.getParameter("status");
 		String data = req.getParameter("data");
-		String quarto = req.getParameter("quarto");
+		String quarto = req.getParameter("quarto");		
+		
 		return new Pedido(Integer.parseInt(id), Integer.parseInt(quarto), Double.parseDouble(valor), descricao, status,
-				data);
+				dataStringLocalDate(data));
+	}
+
+	private LocalDate dataStringLocalDate(String data) {
+		System.out.println("Data do input:" + data);			
+		LocalDate date = LocalDate.parse(data, 
+				DateTimeFormatter.ofPattern("yyyy-MM-dd")
+				.withLocale(new Locale("pt", "br"))
+				);
+		return date;
 	}
 
 	private void getAlterar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -110,6 +123,7 @@ public class PedidoServlet extends HttpServlet {
 		} catch (Exception e) {
 			req.setAttribute("tipoMensagem", "alert alert-danger");
 			req.setAttribute("mensagem", "Erro ao cadastrar: " + e.getMessage());
+			e.printStackTrace();
 		} finally {
 			req.getRequestDispatcher("cadastrar-pedido.jsp").forward(req, resp);
 		}
@@ -120,7 +134,7 @@ public class PedidoServlet extends HttpServlet {
 		String descricao = req.getParameter("descricao");
 		String valor = req.getParameter("valor");
 		String quarto = req.getParameter("quarto");
-		Pedido p = new Pedido(Integer.parseInt(quarto), Double.parseDouble(valor), descricao, "Aberto", data);
+		Pedido p = new Pedido(Integer.parseInt(quarto), Double.parseDouble(valor), descricao, "Aberto", dataStringLocalDate(data));
 		return p;
 	}
 

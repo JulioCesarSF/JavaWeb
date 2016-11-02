@@ -55,7 +55,7 @@
 								<td>${item.quarto }</td>
 								<td>${item.descricao }</td>
 								<td>${item.valor }</td>
-								<td>${item.dataPedido }</td>
+								<td>${item.dataPedidoString()}</td>
 								<td>${item.status }</td>
 								<td style="text-align: center;"><c:url var="alterar"
 										value="pedido">

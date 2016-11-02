@@ -2,6 +2,7 @@ package br.com.fiap.bean;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @SuppressWarnings("serial")
 public class Pedido implements Serializable{
@@ -88,6 +89,10 @@ public class Pedido implements Serializable{
 
 	public void setDataPedido(LocalDate dataPedido) {
 		this.dataPedido = dataPedido;
+	}
+	
+	public String dataPedidoString(){		
+		return this.dataPedido.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 	}
 		
 }

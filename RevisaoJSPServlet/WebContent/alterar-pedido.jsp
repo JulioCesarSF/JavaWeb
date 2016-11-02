@@ -75,10 +75,10 @@
 						<div class="col-md-3">
 							<div class="form-group">
 								<label for="idStatus">Status</label>
-								<select id="idStatus" class="form-control">
+								<select id="idStatus" name="status" class="form-control">
 									<option value="">Selecione</option>
-									<option value="aberto" ${pedido.status  == "Aberto" ? 'selected="selected"' : "" }>Aberto</option>
-									<option value="fechado" ${pedido.status  == "Fechado" ? 'selected="selected"' : "" }>Fechado</option>
+									<option value="Aberto" ${pedido.status  == "Aberto" ? 'selected="selected"' : "" }>Aberto</option>
+									<option value="Fechado" ${pedido.status  == "Fechado" ? 'selected="selected"' : "" }>Fechado</option>
 								</select>
 							</div>
 						</div>

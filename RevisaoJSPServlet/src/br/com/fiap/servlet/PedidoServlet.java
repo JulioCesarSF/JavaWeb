@@ -33,23 +33,7 @@ public class PedidoServlet extends HttpServlet {
 		default:
 			break;
 		}
-	}
-
-	private void alterarPedidoPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		bo = new PedidoBO();
-		try {				
-			bo.atualizar(getFormularioAlteracao(req));
-			req.setAttribute("tipoMensagem", "alert alert-success");
-			req.setAttribute("mensagem", "Pedido atualizado!");
-			req.setAttribute("lista", bo.buscaTodos());
-			req.getRequestDispatcher("listar-pedido.jsp").forward(req, resp);
-		} catch (Exception e) {
-			req.setAttribute("tipoMensagem", "alert alert-danger");
-			req.setAttribute("mensagem", "Erro ao alterar:" + e.getMessage());
-			req.getRequestDispatcher("alterar-pedido.jsp").forward(req, resp);
-		}
-	}
+	}	
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -67,6 +51,33 @@ public class PedidoServlet extends HttpServlet {
 		default:
 			break;
 		}
+	}
+	
+	private void alterarPedidoPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		bo = new PedidoBO();
+		try {				
+			bo.atualizar(getFormularioAlteracao(req));
+			req.setAttribute("tipoMensagem", "alert alert-success");
+			req.setAttribute("mensagem", "Pedido atualizado!");
+			req.setAttribute("lista", bo.buscaTodos());
+			req.getRequestDispatcher("listar-pedido.jsp").forward(req, resp);
+		} catch (Exception e) {
+			req.setAttribute("tipoMensagem", "alert alert-danger");
+			req.setAttribute("mensagem", "Erro ao alterar:" + e.getMessage());
+			req.getRequestDispatcher("alterar-pedido.jsp").forward(req, resp);
+		}
+	}
+	
+	private Pedido getFormularioAlteracao(HttpServletRequest req) {
+		String id = req.getParameter("id");
+		String descricao = req.getParameter("descricao");
+		String valor = req.getParameter("valor");
+		String status = req.getParameter("status");
+		String data = req.getParameter("data");
+		String quarto = req.getParameter("quarto");
+		return new Pedido(Integer.parseInt(id), Integer.parseInt(quarto), Double.parseDouble(valor), descricao, status,
+				data);
 	}
 
 	private void getAlterar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -104,18 +115,7 @@ public class PedidoServlet extends HttpServlet {
 		}
 	}
 
-	private Pedido getFormularioAlteracao(HttpServletRequest req) {
-		String id = req.getParameter("id");
-		String descricao = req.getParameter("descricao");
-		String valor = req.getParameter("valor");
-		String status = req.getParameter("status");
-		String data = req.getParameter("data");
-		String quarto = req.getParameter("quarto");
-		return new Pedido(Integer.parseInt(id), Integer.parseInt(quarto), Double.parseDouble(valor), descricao, status,
-				data);
-	}
-
-	private Pedido getFormulario(HttpServletRequest req) {
+		private Pedido getFormulario(HttpServletRequest req) {
 		String data = req.getParameter("data");
 		String descricao = req.getParameter("descricao");
 		String valor = req.getParameter("valor");

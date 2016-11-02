@@ -1,7 +1,7 @@
 package br.com.fiap.bean;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 @SuppressWarnings("serial")
 public class Pedido implements Serializable{
@@ -16,14 +16,14 @@ public class Pedido implements Serializable{
 	
 	private String status;
 	
-	private String dataPedido;
+	private LocalDate dataPedido;
 
 	public Pedido() {
 		super();
 	}
 
 	public Pedido(int quarto, double valor, String descricao, String status,
-			String dataPedido) {
+			LocalDate dataPedido) {
 		super();
 		this.quarto = quarto;
 		this.valor = valor;
@@ -32,7 +32,7 @@ public class Pedido implements Serializable{
 		this.dataPedido = dataPedido;
 	}
 	public Pedido(int id, int quarto, double valor, String descricao, String status,
-			String dataPedido) {
+			LocalDate dataPedido) {
 		super();
 		this.id = id;
 		this.quarto = quarto;
@@ -82,11 +82,11 @@ public class Pedido implements Serializable{
 		this.status = status;
 	}
 
-	public String getDataPedido() {
+	public LocalDate getDataPedido() {
 		return dataPedido;
 	}
 
-	public void setDataPedido(String dataPedido) {
+	public void setDataPedido(LocalDate dataPedido) {
 		this.dataPedido = dataPedido;
 	}
 		

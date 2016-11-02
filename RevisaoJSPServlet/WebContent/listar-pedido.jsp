@@ -62,7 +62,7 @@
 										<c:param name="acao" value="alterar"></c:param>
 										<c:param name="id" value="${item.id }"></c:param>
 									</c:url> <a href=${alterar } " class="btn btn-primary btn-sm">Alterar</a>
-									<a href="excluir-pedido.jsp" class="btn btn-danger btn-sm">Excluir</a>
+									<button onclick="idId.value=${item.id}" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">Excluir</button>
 								</td>
 							</tr>
 						</c:forEach>
@@ -73,6 +73,30 @@
 		</div>
 
 	</div>
+	
+	<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Excluir Pedido</h4>
+      </div>
+      <div class="modal-body">
+       	<p>Você realmente deseja excluir este pedido?</p>
+      </div>
+      <div class="modal-footer">
+      <form>
+      	<input type="hidden" name="acao" value="excluir">
+      	<input type="hidden" id="idId" name="id">
+     
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <input type="submit" value="Excluir" class="btn btn-danger">
+         </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

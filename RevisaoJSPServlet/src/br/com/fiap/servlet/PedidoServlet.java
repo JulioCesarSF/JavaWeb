@@ -32,9 +32,33 @@ public class PedidoServlet extends HttpServlet {
 		case "alterar":
 			alterarPedidoPost(req, resp);
 			break;
+			
+		case "excluir":
+			excluirPedido(req, resp);
+			break;
 
 		default:
 			break;
+		}
+	}
+
+	private void excluirPedido(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		bo = new PedidoBO();
+		
+		try {
+			String id = req.getParameter("id");
+			bo.remover(Integer.parseInt(id));
+			req.setAttribute("tipoMensagem", "alert alert-success");
+			req.setAttribute("mensagem", "Pedido excluído!");
+			System.out.println("Excluir sucesso");
+		} catch (Exception e) {
+			req.setAttribute("tipoMensagem", "alert alert-danger");
+			req.setAttribute("mensagem", "Erro ao excluir: " + e.getMessage());
+			e.printStackTrace();
+		}finally {
+			req.setAttribute("lista", bo.buscaTodos());
+			req.getRequestDispatcher("listar-pedido.jsp").forward(req, resp);
+			System.out.println("REquest listar-pedido.jsp");
 		}
 	}	
 

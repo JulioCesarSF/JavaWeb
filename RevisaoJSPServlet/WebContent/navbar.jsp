@@ -1,4 +1,4 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
@@ -25,7 +25,12 @@
 					<ul class="dropdown-menu">
 						<li><a href="cadastrar-pedido.jsp">Cadastrar</a></li>						
 						<li role="separator" class="divider"></li>
-						<li><a href="listar-pedido.jsp">Listar</a></li>
+						<li>
+							<c:url var="listar" value="pedido">
+								<c:param name="acao" value="listar"></c:param>
+							</c:url>
+							<a href="${listar }">Lista de Produto</a>
+						</li>
 					</ul></li>
 			</ul>
 		</div>

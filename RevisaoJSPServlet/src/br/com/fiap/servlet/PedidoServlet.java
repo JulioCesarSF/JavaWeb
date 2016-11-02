@@ -28,8 +28,13 @@ public class PedidoServlet extends HttpServlet{
 
 		default:
 			break;
-		}
-		
+		}		
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doGet(req, resp);
 	}
 
 	private void cadastrarPedido(HttpServletRequest req, HttpServletResponse resp)

@@ -46,7 +46,11 @@
 							<td>${item.valor }</td>
 							<td>${item.dataPedido }</td>
 							<td style="text-align: center;">
-								<a href="alterar-pedido.jsp" class="btn btn-primary btn-sm">Alterar</a>
+								<c:url var="alterar" value="pedido">
+									<c:param name="acao" value="alterar"></c:param>
+									<c:param name="id" value="${item.id }"></c:param>
+								</c:url>							
+								<a href=${alterar }" class="btn btn-primary btn-sm">Alterar</a>
 								<a href="excluir-pedido.jsp" class="btn btn-danger btn-sm">Excluir</a>
 							</td>
 						</tr>

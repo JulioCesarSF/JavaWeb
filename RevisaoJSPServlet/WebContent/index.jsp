@@ -10,6 +10,9 @@
 </head>
 
 <body>
+
+<%@ include file="navbar.jsp" %>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">

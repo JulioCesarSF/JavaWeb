@@ -16,7 +16,7 @@
 
 
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-4">
 				<c:if test="${not empty tipoMensagem }">
 					<div class="${tipoMensagem }">
 						<p>${mensagem }</p>

@@ -39,6 +39,19 @@ public class PedidoServlet extends HttpServlet{
 		case "listar":			
 			listarPedidos(req, resp);			
 			break;
+			
+		case "alterar":
+			String id = req.getParameter("id");			
+			try {
+				bo = new PedidoBO();
+				req.setAttribute("pedido", bo.buscar(Integer.parseInt(id)));
+				req.getRequestDispatcher("alterar-pedido.jsp").forward(req, resp);
+			} catch (Exception e) {
+				req.setAttribute("tipoMensagem", "alert alert-danger");
+				req.setAttribute("mensagem", "Erro ao acessar pedido: " + e.getMessage());
+				req.getRequestDispatcher("listar-pedido.jsp").forward(req, resp);
+			}
+			break;
 
 		default:
 			break;

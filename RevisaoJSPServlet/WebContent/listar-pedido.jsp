@@ -43,6 +43,7 @@
 							<th>Descrição</th>
 							<th>Valor</th>
 							<th>Data Pedido</th>
+							<th>Status</th>
 							<th style="text-align: center;">Ação</th>
 						</tr>
 					</thead>
@@ -55,6 +56,7 @@
 								<td>${item.descricao }</td>
 								<td>${item.valor }</td>
 								<td>${item.dataPedido }</td>
+								<td>${item.status }</td>
 								<td style="text-align: center;"><c:url var="alterar"
 										value="pedido">
 										<c:param name="acao" value="alterar"></c:param>
